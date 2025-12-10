@@ -1,0 +1,36 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "name": "Computer Application in Business",
+      "description": "Microsoft Office licence and setup. Word, Excel, PowerPoint support and training.",
+      "icon": "fas fa-laptop-code",
+      "features": ["Licensing", "Setup", "Training", "Support"],
+      "details": "Complete Microsoft Office solutions including installation, configuration, and user training for optimal business productivity."
+    },
+    {
+      "id": 2,
+      "name": "Web Development",
+      "description": "Front-end and full stack projects. Custom websites and web applications.",
+      "icon": "fas fa-code",
+      "features": ["Frontend", "Backend", "Responsive", "Modern"],
+      "details": "Custom web development services including responsive design, e-commerce solutions, and web application development."
+    },
+    {
+      "id": 3,
+      "name": "Hardware Systems",
+      "description": "Windows repair, installation, and software setup for all hardware.",
+      "icon": "fas fa-tools",
+      "features": ["Repair", "Installation", "Setup", "Maintenance"],
+      "details": "Comprehensive hardware services including system diagnostics, repairs, upgrades, and preventive maintenance."
+    },
+    {
+      "id": 4,
+      "name": "Database Management",
+      "description": "SQL and PostgreSQL database design, implementation, and support.",
+      "icon": "fas fa-database",
+      "features": ["Design", "Implementation", "Support", "Optimization"],
+      "details": "Professional database services including design, implementation, optimization, and ongoing maintenance."
+    }
+  ]
+}

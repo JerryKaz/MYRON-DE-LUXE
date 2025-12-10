@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MYRON DE LUXE - Experience the difference in quality. Premium fragrances and tech solutions in Ghana.">
+    <meta name="keywords" content="perfumes, tech solutions, Ghana, Accra, WhatsApp commerce, fragrance, web development, IT support">
+    <title>MYRON DE LUXE | Premium Fragrances & Tech Solutions</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Pro+Text:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="js/main.js" as="script">
+    <link rel="preload" href="css/main.css" as="style">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="MYRON DE LUXE | Premium Fragrances & Tech Solutions">
+    <meta property="og:description" content="Experience the difference in quality with premium fragrances and professional tech solutions in Ghana.">
+    <meta property="og:image" content="assets/images/social-preview.jpg">
+    <meta property="og:url" content="https://yourdomain.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MYRON DE LUXE | Premium Quality">
+    <meta name="twitter:description" content="Premium fragrances and innovative tech solutions in Ghana.">
+    <meta name="twitter:image" content="assets/images/twitter-preview.jpg">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                    <path d="M30 5L55 20V40L30 55L5 40V20L30 5Z" stroke="var(--primary)" stroke-width="2"/>
+                    <path d="M30 20L40 25V35L30 40L20 35V25L30 20Z" fill="var(--primary)"/>
+                </svg>
+            </div>
+            <div class="loader-text">MYRON DE LUXE</div>
+            <div class="loader-progress">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="#home" class="nav-logo" data-aos="fade-down">
+                <div class="logo-mark">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <path d="M16 2L28 10V22L16 30L4 22V10L16 2Z" fill="var(--primary)"/>
+                        <path d="M16 12L22 15V19L16 22L10 19V15L16 12Z" fill="white"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-primary">MYRON</span>
+                    <span class="logo-secondary">DE LUXE</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="nav-menu">
+                <a href="#home" class="nav-link" data-scroll="home">
+                    <span class="nav-icon"><i class="fas fa-home"></i></span>
+                    <span class="nav-text">Home</span>
+                </a>
+                <a href="#fragrance" class="nav-link" data-scroll="fragrance">
+                    <span class="nav-icon"><i class="fas fa-spray-can-sparkles"></i></span>
+                    <span class="nav-text">Fragrance</span>
+                </a>
+                <a href="#tech" class="nav-link" data-scroll="tech">
+                    <span class="nav-icon"><i class="fas fa-microchip"></i></span>
+                    <span class="nav-text">Tech Solutions</span>
+                </a>
+                <a href="#contact" class="nav-link" data-scroll="contact">
+                    <span class="nav-icon"><i class="fas fa-headset"></i></span>
+                    <span class="nav-text">Contact</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+            </button>
+
+            <!-- Theme Toggle -->
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-content">
+                <a href="#home" class="mobile-nav-link" data-scroll="home">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="#fragrance" class="mobile-nav-link" data-scroll="fragrance">
+                    <i class="fas fa-spray-can-sparkles"></i> Fragrance
+                </a>
+                <a href="#tech" class="mobile-nav-link" data-scroll="tech">
+                    <i class="fas fa-microchip"></i> Tech Solutions
+                </a>
+                <a href="#contact" class="mobile-nav-link" data-scroll="contact">
+                    <i class="fas fa-headset"></i> Contact
+                </a>
+                <div class="mobile-contact">
+                    <a href="https://wa.me/0550427241" class="whatsapp-btn mobile" target="_blank" rel="noopener">
+                        <i class="fab fa-whatsapp"></i> Fragrance: 0550427241
+                    </a>
+                    <a href="https://wa.me/0208807036" class="whatsapp-btn mobile" target="_blank" rel="noopener">
+                        <i class="fab fa-whatsapp"></i> Tech: 0208807036
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section" id="home">
+            <div class="hero-background">
+                <div class="particles" id="particles"></div>
+                <div class="gradient-overlay"></div>
+            </div>
+            
+            <div class="hero-container">
+                <div class="hero-content" data-aos="fade-up" data-aos-delay="100">
+                    <h1 class="hero-title">
+                        <span class="title-line">Experience the</span>
+                        <span class="title-line highlight">difference in quality</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Premium fragrances and innovative tech solutions
+                    </p>
+                </div>
+
+                <!-- Path Selection -->
+                <div class="path-selection" data-aos="fade-up" data-aos-delay="200">
+                    <div class="path-grid">
+                        <!-- Fragrance Path -->
+                        <div class="path-card fragrance-path" data-path="fragrance">
+                            <div class="path-card-inner">
+                                <div class="path-icon">
+                                    <i class="fas fa-wind"></i>
+                                </div>
+                                <div class="path-content">
+                                    <h3 class="path-title">Fragrance</h3>
+                                    <p class="path-description">
+                                        Discover premium scents for every style
+                                    </p>
+                                    <div class="path-features">
+                                        <span class="feature-tag">Unisex</span>
+                                        <span class="feature-tag">Diffusers</span>
+                                        <span class="feature-tag">Oils</span>
+                                    </div>
+                                </div>
+                                <button class="path-action-btn" data-action="fragrance">
+                                    Shop Fragrance
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                            <div class="path-hover-effect"></div>
+                        </div>
+
+                        <!-- Tech Solutions Path -->
+                        <div class="path-card tech-path" data-path="tech">
+                            <div class="path-card-inner">
+                                <div class="path-icon">
+                                    <i class="fas fa-laptop-code"></i>
+                                </div>
+                                <div class="path-content">
+                                    <h3 class="path-title">Tech Solutions</h3>
+                                    <p class="path-description">
+                                        Smart technology services for real business needs
+                                    </p>
+                                    <div class="path-features">
+                                        <span class="feature-tag">Web Dev</span>
+                                        <span class="feature-tag">IT Support</span>
+                                        <span class="feature-tag">Database</span>
+                                    </div>
+                                </div>
+                                <button class="path-action-btn" data-action="tech">
+                                    Explore Solutions
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                            <div class="path-hover-effect"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scroll Indicator -->
+                <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="300">
+                    <div class="mouse">
+                        <div class="wheel"></div>
+                    </div>
+                    <span class="scroll-text">Scroll to explore</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fragrance Section -->
+        <section class="section fragrance-section" id="fragrance">
+            <div class="section-container">
+                <!-- Section Header -->
+                <div class="section-header" data-aos="fade-up">
+                    <div class="section-badge">Premium Collection</div>
+                    <h2 class="section-title">
+                        MYRON DE LUXE <span class="gradient-text">Fragrance</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        Experience the difference in quality with our exclusive scent collection
+                    </p>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="category-filters" data-aos="fade-up" data-aos-delay="50">
+                    <div class="filter-scroll">
+                        <button class="filter-btn active" data-category="all">
+                            <i class="fas fa-star"></i> All Products
+                        </button>
+                        <button class="filter-btn" data-category="unisex">
+                            <i class="fas fa-user-friends"></i> Unisex Perfumes
+                        </button>
+                        <button class="filter-btn" data-category="diffusers">
+                            <i class="fas fa-home"></i> Diffusers
+                        </button>
+                        <button class="filter-btn" data-category="oils">
+                            <i class="fas fa-oil-can"></i> Perfume Oils
+                        </button>
+                        <button class="filter-btn" data-category="creams">
+                            <i class="fas fa-hand-sparkles"></i> Hand Creams
+                        </button>
+                        <button class="filter-btn" data-category="candles">
+                            <i class="fas fa-fire"></i> Scented Candles
+                        </button>
+                        <button class="filter-btn" data-category="accessories">
+                            <i class="fas fa-gem"></i> Accessories
+                        </button>
+                    </div>
+                    <div class="filter-controls">
+                        <button class="filter-nav prev-filter">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="filter-nav next-filter">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Products Gallery -->
+                <div class="gallery-container" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-header">
+                        <h3 class="gallery-title">
+                            <i class="fas fa-crown"></i> Featured Collection
+                            <span class="product-count" id="productCount">47 Products</span>
+                        </h3>
+                        <div class="gallery-controls">
+                            <button class="gallery-nav prev-gallery" aria-label="Previous products">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="gallery-indicator">
+                                <span class="current-slide">1</span> / <span class="total-slides">5</span>
+                            </div>
+                            <button class="gallery-nav next-gallery" aria-label="Next products">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="products-gallery" id="fragranceGallery">
+                        <!-- Products loaded dynamically -->
+                    </div>
+
+                    <!-- Gallery Status -->
+                    <div class="gallery-status">
+                        <div class="status-item">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>Real-time inventory</span>
+                        </div>
+                        <div class="status-item">
+                            <i class="fas fa-shipping-fast"></i>
+                            <span>Nationwide delivery</span>
+                        </div>
+                        <div class="status-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Quality guaranteed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Order -->
+                <div class="quick-order" data-aos="fade-up" data-aos-delay="150">
+                    <div class="quick-order-content">
+                        <div class="quick-order-text">
+                            <h4>Ready to order?</h4>
+                            <p>Connect directly via WhatsApp for instant service</p>
+                        </div>
+                        <a href="https://wa.me/0550427241" class="whatsapp-order-btn" target="_blank" rel="noopener">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>Order on WhatsApp</span>
+                            <div class="btn-pulse"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Solutions Section -->
+        <section class="section tech-section" id="tech">
+            <div class="section-container">
+
+
+
+                <!-- Section Header -->
+                <div class="section-header" data-aos="fade-up">
+                    <div class="section-badge tech">Expert Services</div>
+                    <h2 class="section-title">
+                        MYRON DE LUXE <span class="gradient-text tech"></span><span style="
+    background:linear-gradient(90deg,hwb(227 12% 10%),#063f5e);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    display:inline-block;
+    font-weight:600;
+">
+    Tech Solutions
+</span>
+
+                    </h2>
+                    <p class="section-subtitle">
+                        Professional technology services for modern businesses
+                    </p>
+                </div>
+
+
+
+                
+
+                <!-- Services Grid -->
+                <div class="services-grid" id="servicesGrid" data-aos="fade-up" data-aos-delay="50">
+                    <!-- Services loaded dynamically -->
+                </div>
+
+                <!-- Tech Contact -->
+                <div class="tech-contact" data-aos="fade-up" data-aos-delay="100">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h4>Expert Tech Support</h4>
+                            <p>Available Monday - Saturday, 9AM - 6PM</p>
+                            <a href="https://wa.me/0208807036" class="tech-whatsapp-btn" target="_blank" rel="noopener">
+                                <i class="fab fa-whatsapp"></i>
+                                Chat on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section contact-section" id="contact">
+            <div class="section-container">
+                <div class="contact-grid" data-aos="fade-up">
+                    <!-- Contact Info -->
+                    <div class="contact-info">
+                        <div class="contact-header">
+                            <h3 class="contact-title">Get in Touch</h3>
+                            <p class="contact-subtitle">Connect with us for premium service</p>
+                        </div>
+
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h5>Location</h5>
+                                    <p>Lakeside Estate, Accra</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-truck"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h5>Delivery</h5>
+                                    <p>Nationwide service available</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h5>Business Hours</h5>
+                                    <p>Mon - Sat: 9:00 AM - 6:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp Quick Connect -->
+                        <div class="whatsapp-connect">
+                            <h5>Quick Connect</h5>
+                            <div class="whatsapp-buttons">
+                                <a href="https://wa.me/0550427241" class="whatsapp-contact-btn fragrance" target="_blank" rel="noopener">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <span>Fragrance: 0550427241</span>
+                                </a>
+                                <a href="https://wa.me/0208807036" class="whatsapp-contact-btn tech" target="_blank" rel="noopener">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <span>Tech: 0208807036</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form" data-aos="fade-up" data-aos-delay="100">
+                        <form id="enquiryForm">
+                            <div class="form-header">
+                                <h4>Send Enquiry</h4>
+                                <p>We'll respond via WhatsApp within 24 hours</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="enquiryType">Service Type</label>
+                                <select id="enquiryType" required>
+                                    <option value="">Select service</option>
+                                    <option value="fragrance">Fragrance Products</option>
+                                    <option value="computer">Computer Applications</option>
+                                    <option value="web">Web Development</option>
+                                    <option value="hardware">Hardware Systems</option>
+                                    <option value="database">Database Management</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phoneNumber">WhatsApp Number</label>
+                                <input type="tel" id="phoneNumber" placeholder="+233 XX XXX XXXX" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" rows="4" placeholder="Briefly describe your needs..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="submit-btn">
+                                <i class="fab fa-whatsapp"></i>
+                                Send via WhatsApp
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Footer Top -->
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#home" class="footer-logo">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <path d="M20 2L38 12V28L20 38L2 28V12L20 2Z" fill="var(--primary)"/>
+                            <path d="M20 14L28 18V22L20 26L12 22V18L20 14Z" fill="white"/>
+                        </svg>
+                        <div class="footer-logo-text">
+                            <span>MYRON DE LUXE</span>
+                            <small>Experience the difference</small>
+                        </div>
+                    </a>
+                    <p class="footer-tagline">
+                        Premium quality fragrances and technology solutions
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h5>Fragrance</h5>
+                        <a href="#fragrance" data-scroll="fragrance">Perfumes</a>
+                        <a href="#fragrance" data-scroll="fragrance">Diffusers</a>
+                        <a href="#fragrance" data-scroll="fragrance">Oils & Creams</a>
+                        <a href="#fragrance" data-scroll="fragrance">Accessories</a>
+                    </div>
+                    <div class="link-column">
+                        <h5>Tech Solutions</h5>
+                        <a href="#tech" data-scroll="tech">Computer Apps</a>
+                        <a href="#tech" data-scroll="tech">Web Development</a>
+                        <a href="#tech" data-scroll="tech">Hardware Systems</a>
+                        <a href="#tech" data-scroll="tech">Database Management</a>
+                    </div>
+                    <div class="link-column">
+                        <h5>Company</h5>
+                        <a href="#home" data-scroll="home">Home</a>
+                        <a href="#contact" data-scroll="contact">Contact</a>
+                        <a href="#" id="privacyModal">Privacy</a>
+                        <a href="#" id="termsModal">Terms</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; 2025 MYRON DE LUXE. All rights reserved.
+                </div>
+                <div class="footer-social">
+                    <!-- WhatsApp Links -->
+                    <a href="https://wa.me/0550427241" class="social-link" aria-label="WhatsApp Fragrance" target="_blank" rel="noopener">
+                        <i class="fab fa-whatsapp">💄</i>
+                    </a>
+                    <a href="https://wa.me/0208807036" class="social-link" aria-label="WhatsApp Tech" target="_blank" rel="noopener">
+                        <i class="fab fa-whatsapp">👩‍💻</i>
+                    </a>
+                    
+                    <!-- Social Media Links -->
+                    <!--<a href="https://www.instagram.com/YOUR_INSTAGRAM_USERNAME" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
+                        <i class="fab fa-instagram"></i>-->
+                    </a>
+                    <a href="https://www.tiktok.com/@myron.de.luxe?_r=1&_t=ZM-926ubE6Ua2G" class="social-link" aria-label="TikTok" target="_blank" rel="noopener">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                   <!-- <a href="https://www.facebook.com/YOUR_FACEBOOK_PAGE" class="social-link" aria-label="Facebook" target="_blank" rel="noopener">
+                        <i class="fab fa-facebook-f"></i> -->
+                    </a>
+                    <!--<a href="https://x.com/YOUR_TWITTER_USERNAME" class="social-link" aria-label="Twitter / X" target="_blank" rel="noopener">
+                        <i class="fab fa-twitter"></i>-->
+                    </a>
+                </div>
+                <div class="footer-note">
+                    All orders handled securely via WhatsApp
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Modals -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body" id="modalBody">
+                <!-- Product details loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <!-- Scripts -->
+    <script src="js/products.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/analytics.js" defer></script>
+    
+    <!-- Lazy loading for non-critical assets -->
+    <script>
+        // Load non-critical CSS
+        function loadNonCriticalCSS() {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'css/animations.css';
+            document.head.appendChild(link);
+        }
+        window.addEventListener('load', loadNonCriticalCSS);
+        
+        // Initialize social media tracking
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track social media clicks
+            const socialLinks = document.querySelectorAll('.footer-social .social-link');
+            socialLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const platform = this.getAttribute('aria-label').toLowerCase();
+                    console.log(`Social media clicked: ${platform}`);
+                    // Add your analytics tracking here
+                });
+            });
+        });
+    </script>
+</body>
+</html>
