@@ -469,8 +469,12 @@ class MyronDeluxeApp {
     }
     
     processEnquiry(enquiryType, phoneNumber, message) {
-        // Determine WhatsApp number
-        const whatsappNumber = enquiryType === 'fragrance' ? '0550427241' : '0208807036';
+        // Determine WhatsApp number - CORRECTED FORMAT
+        // Fragrance: 0550427241 → 233550427241
+        // Tech: 0208807036 → 233208807036
+        const whatsappNumber = enquiryType === 'fragrance' 
+            ? '233550427241' 
+            : '233208807036';
         
         // Service names mapping
         const serviceNames = {
@@ -549,6 +553,11 @@ Best regards.`;
         let value = input.value.replace(/\D/g, '');
         
         if (value.length > 0) {
+            // Remove leading zero if present
+            if (value.startsWith('0')) {
+                value = value.substring(1);
+            }
+            
             // Add Ghana country code if missing
             if (!value.startsWith('233') && value.length <= 9) {
                 value = '233' + value;
@@ -795,7 +804,7 @@ Best regards.`;
         document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
             link.addEventListener('click', (e) => {
                 const url = e.currentTarget.href;
-                const type = url.includes('0550427241') ? 'fragrance' : 'tech';
+                const type = url.includes('233550427241') ? 'fragrance' : 'tech';
                 
                 this.trackEvent('whatsapp_click', {
                     type: type,
@@ -1102,9 +1111,10 @@ class ProductManager {
         card.dataset.category = product.category;
         card.dataset.id = product.id;
 
-        const whatsappMessage = `Hi, I want to order: ${product.name}`;
+        const whatsappMessage = `Hi, I want to order: ${product.name}\n\nDescription: ${product.description}`;
         const encodedMessage = encodeURIComponent(whatsappMessage);
-        const whatsappLink = `https://wa.me/0550427241?text=${encodedMessage}`;
+        // FIXED: Changed from 0550427241 to 233550427241
+        const whatsappLink = `https://wa.me/233550427241?text=${encodedMessage}`;
 
         card.innerHTML = `
             <div class="product-image">
@@ -1123,7 +1133,7 @@ class ProductManager {
                     <a href="${whatsappLink}" 
                        target="_blank" 
                        class="whatsapp-btn"
-                       onclick="window.app?.trackEvent('product_order', { product: '${product.name.replace(/'/g, "\\'")}' })">
+                       onclick="orderProduct('${product.name.replace(/'/g, "\\'")}', '${product.description.replace(/'/g, "\\'")}')">
                         <i class="fab fa-whatsapp"></i>
                         Order on WhatsApp
                     </a>
@@ -1163,7 +1173,8 @@ class ProductManager {
 
         const whatsappMessage = `Hi, I need help with: ${service.name}`;
         const encodedMessage = encodeURIComponent(whatsappMessage);
-        const whatsappLink = `https://wa.me/0208807036?text=${encodedMessage}`;
+        // FIXED: Changed from 0208807036 to 233208807036
+        const whatsappLink = `https://wa.me/233208807036?text=${encodedMessage}`;
 
         card.innerHTML = `
             <div class="service-icon">
@@ -1181,7 +1192,7 @@ class ProductManager {
             <a href="${whatsappLink}" 
                target="_blank" 
                class="tech-whatsapp-btn"
-               onclick="window.app?.trackEvent('service_enquiry', { service: '${service.name.replace(/'/g, "\\'")}' })">
+               onclick="orderService('${service.name.replace(/'/g, "\\'")}')">
                 <i class="fab fa-whatsapp"></i>
                 WhatsApp
             </a>
@@ -1204,12 +1215,10 @@ class ProductManager {
                         <h3>${product.name}</h3>
                         <p class="detail-description">${product.description}</p>
                         <div class="detail-actions">
-                            <a href="https://wa.me/0550427241?text=${encodeURIComponent(`Hi, I want to order: ${product.name}`)}" 
-                               target="_blank" 
-                               class="whatsapp-btn large">
+                            <button class="whatsapp-btn large" onclick="orderProduct('${product.name.replace(/'/g, "\\'")}', '${product.description.replace(/'/g, "\\'")}')">
                                 <i class="fab fa-whatsapp"></i>
                                 Order on WhatsApp
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1327,6 +1336,101 @@ if (document.readyState === 'loading') {
 }
 
 // ===== Global Helper Functions =====
+// Global WhatsApp order function for products
+function orderProduct(productName, productDescription) {
+    console.log('Ordering product:', productName);
+    
+    // Fixed WhatsApp number format for fragrance
+    const whatsappNumber = '233550427241'; // +233550427241
+    
+    // Create order message
+    const orderMessage = `Hello MYRON DE LUXE,
+
+I would like to order:
+
+📦 Product: ${productName}
+📝 Description: ${productDescription}
+
+Please let me know:
+1. Price
+2. Availability
+3. Delivery options
+4. Payment methods
+
+Thank you!`;
+    
+    // Encode message
+    const encodedMessage = encodeURIComponent(orderMessage);
+    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    console.log('Product order WhatsApp link:', whatsappLink);
+    
+    // Open WhatsApp
+    window.open(whatsappLink, '_blank');
+    
+    // Track event
+    if (window.app) {
+        window.app.trackEvent('product_order_click', { product: productName });
+    }
+    
+    // Show notification
+    setTimeout(() => {
+        if (window.app) {
+            window.app.showNotification('WhatsApp opened! Please send your order details.', 'success');
+        } else {
+            alert('WhatsApp opened! Please send your order details.');
+        }
+    }, 500);
+    
+    return false;
+}
+
+// Global WhatsApp order function for services
+function orderService(serviceName) {
+    console.log('Ordering service:', serviceName);
+    
+    // Fixed WhatsApp number format for tech
+    const whatsappNumber = '233208807036'; // +233208807036
+    
+    // Create service enquiry message
+    const serviceMessage = `Hello MYRON DE LUXE,
+
+I need help with your tech service:
+
+🛠️ Service: ${serviceName}
+
+Please provide:
+1. Service details
+2. Pricing
+3. Timeline
+4. Requirements
+
+Thank you!`;
+    
+    // Encode message
+    const encodedMessage = encodeURIComponent(serviceMessage);
+    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    console.log('Service order WhatsApp link:', whatsappLink);
+    
+    // Open WhatsApp
+    window.open(whatsappLink, '_blank');
+    
+    // Track event
+    if (window.app) {
+        window.app.trackEvent('service_order_click', { service: serviceName });
+    }
+    
+    // Show notification
+    setTimeout(() => {
+        if (window.app) {
+            window.app.showNotification('WhatsApp opened! Please send your service enquiry.', 'success');
+        }
+    }, 500);
+    
+    return false;
+}
+
 // Global WhatsApp enquiry handler for inline onclick
 function handleWhatsAppEnquiry() {
     if (window.app && typeof window.app.handleEnquiryFormDirect === 'function') {
@@ -1343,7 +1447,11 @@ function handleWhatsAppEnquiry() {
             return false;
         }
         
-        const whatsappNumber = enquiryType === 'fragrance' ? '0550427241' : '0208807036';
+        // Fixed WhatsApp numbers
+        const whatsappNumber = enquiryType === 'fragrance' 
+            ? '233550427241' 
+            : '233208807036';
+        
         const serviceNames = {
             'fragrance': 'Fragrance Products',
             'computer': 'Computer Applications in Business',
@@ -1372,6 +1480,72 @@ Best regards.`;
         }, 500);
     }
     return false;
+}
+
+// Function for general fragrance enquiries
+function openWhatsAppFragrance() {
+    const whatsappNumber = '233550427241'; // +233550427241
+    
+    const message = `Hello MYRON DE LUXE,
+
+I'm interested in your fragrance products. Please send me:
+1. Full product catalogue
+2. Price list
+3. Delivery information
+4. Available discounts/promotions
+
+Thank you!`;
+    
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    console.log('General fragrance WhatsApp link:', whatsappLink);
+    window.open(whatsappLink, '_blank');
+    
+    // Track event
+    if (window.app) {
+        window.app.trackEvent('fragrance_general_enquiry');
+    }
+    
+    // Show notification
+    setTimeout(() => {
+        if (window.app) {
+            window.app.showNotification('WhatsApp opened for fragrance enquiry!', 'success');
+        }
+    }, 500);
+}
+
+// Function for general tech enquiries
+function openWhatsAppTech() {
+    const whatsappNumber = '233208807036'; // +233208807036
+    
+    const message = `Hello MYRON DE LUXE,
+
+I'm interested in your tech solutions. Please send me:
+1. Service catalog
+2. Pricing information
+3. Service timelines
+4. Client requirements
+
+Thank you!`;
+    
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    console.log('General tech WhatsApp link:', whatsappLink);
+    window.open(whatsappLink, '_blank');
+    
+    // Track event
+    if (window.app) {
+        window.app.trackEvent('tech_general_enquiry');
+    }
+    
+    // Show notification
+    setTimeout(() => {
+        if (window.app) {
+            window.app.showNotification('WhatsApp opened for tech enquiry!', 'success');
+        }
+    }, 500);
 }
 
 // ===== Add CSS for form errors =====
